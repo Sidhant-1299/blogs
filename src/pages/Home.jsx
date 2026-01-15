@@ -19,8 +19,8 @@ export default function Home() {
     <div className="space-y-10">
       {/* HERO */}
       {/* HERO (full-bleed inside the main content area) */}
-<div className="-mx-6">
-  <div className="relative h-[62vh] min-h-[420px] max-h-[820px] overflow-hidden rounded-none 2xl:rounded-2xl">
+<div className="-mx-6 2xl:-mx-24 3xl:-mx-36">
+  <div className="relative h-[62vh] min-h-[420px] max-h-[820px] overflow-hidden rounded-none xl:rounded-sm 2xl:rounded-2xl">
     <div
       className="absolute inset-0 bg-cover bg-center brightness-110 contrast-105 saturate-110"
       style={{ backgroundImage: "url(/samurai_bg.webp)" }}
