@@ -12,6 +12,10 @@ export default {
         border: "rgb(var(--border) / <alpha-value>)",
         accent: "rgb(var(--accent) / <alpha-value>)",
       },
+      fontFamily: {
+        sans: ["var(--font-sans)"],
+        display: ["var(--font-display)"],
+      },
       boxShadow: {
         soft: "0 10px 30px rgba(0,0,0,0.35)",
       },

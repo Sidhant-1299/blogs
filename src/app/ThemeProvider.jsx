@@ -1,3 +1,4 @@
+// ThemeProvider.jsx
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 const ThemeCtx = createContext(null);
@@ -5,8 +6,7 @@ const ThemeCtx = createContext(null);
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem("theme");
-    if (saved) return saved;
-    return "dark"; // default to dark since you're cloning Notion dark
+    return saved || "dark";
   });
 
   useEffect(() => {
