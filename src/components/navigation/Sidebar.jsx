@@ -10,26 +10,26 @@ const linkActive = "text-text bg-surface2";
 export default function Sidebar({ open, onClose }) {
   return (
     <>
-      {/* overlay for mobile */}
+      {/* overlay for mobile + tablet */}
       <div
         onClick={onClose}
         className={[
-          "fixed inset-0 z-30 bg-black/50 md:hidden transition",
+          "fixed inset-0 z-30 bg-black/50 lg:hidden transition",
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
         ].join(" ")}
       />
 
       <aside
         className={[
-          "fixed z-40 md:static md:z-auto",
+          "fixed z-40 lg:static lg:z-auto",
           "h-screen w-[280px] shrink-0 border-r border-border bg-surface",
           "transition-transform",
-          open ? "translate-x-0" : "-translate-x-full md:translate-x-0",
+          open ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
         ].join(" ")}
       >
         <div className="flex items-center justify-between px-3 py-3 border-b border-border">
           <div className="text-sm font-semibold">Your Blog</div>
-          <IconButton onClick={onClose} className="md:hidden" aria-label="Close menu">
+          <IconButton onClick={onClose} className="lg:hidden" aria-label="Close menu">
             <X size={18} />
           </IconButton>
         </div>
