@@ -13,12 +13,10 @@ export default function TopBar({ onMenu }) {
 
   useEffect(() => {
     const onKey = (e) => {
-      // Cmd/Ctrl + K focuses search
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
         inputRef.current?.focus();
       }
-      // "/" focuses search (classic app behavior)
       if (!e.metaKey && !e.ctrlKey && e.key === "/") {
         const tag = document.activeElement?.tagName?.toLowerCase();
         if (tag !== "input" && tag !== "textarea") {
@@ -32,9 +30,9 @@ export default function TopBar({ onMenu }) {
   }, []);
 
   return (
-    <header className="sticky top-0 z-20 border-b border-border bg-app/80 backdrop-blur">
+    <header className="fixed top-0 left-0 z-50 w-screen border-b border-border bg-app/80 backdrop-blur">
       <div className="flex items-center gap-3 px-4 py-3">
-        <IconButton onClick={onMenu} className="" aria-label="Open menu">
+        <IconButton onClick={onMenu} aria-label="Open menu">
           <Menu size={18} />
         </IconButton>
 
