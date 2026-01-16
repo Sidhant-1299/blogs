@@ -34,11 +34,11 @@ export default function TopBar({ onMenu }) {
   return (
     <header className="sticky top-0 z-20 border-b border-border bg-app/80 backdrop-blur">
       <div className="flex items-center gap-3 px-4 py-3">
-        <IconButton onClick={onMenu} className="md:hidden" aria-label="Open menu">
+        <IconButton onClick={onMenu} className="" aria-label="Open menu">
           <Menu size={18} />
         </IconButton>
 
-        <div className="hidden md:block text-sm text-muted">
+        <div className="hidden lg:block text-sm text-muted">
           Archive <span className="text-muted/60">/</span> Home
         </div>
 
