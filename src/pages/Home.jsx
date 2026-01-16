@@ -17,25 +17,22 @@ export default function Home() {
 
   return (
     <div className="space-y-10">
-      {/* HERO */}
-      {/* HERO (full-bleed inside the main content area) */}
-<div className="-mx-6 2xl:-mx-24 3xl:-mx-36">
-  <div className="relative h-[62vh] min-h-[420px] max-h-[820px] overflow-hidden rounded-none xl:rounded-sm 2xl:rounded-2xl">
-    <div
-      className="absolute inset-0 bg-cover bg-center brightness-110 contrast-105 saturate-110"
-      style={{ backgroundImage: "url(/samurai_bg.webp)" }}
-    />
-    {/* lighter overlay */}
-    <div className="absolute inset-0 bg-black/35" />
-    {/* softer vignette */}
-    <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/45" />
-  </div>
-</div>
+      {/* HERO: full-bleed to viewport edges */}
+      <section className="relative left-1/2 right-1/2 w-screen -ml-[50vw] -mr-[50vw]">
+        <div className="relative h-[62vh] min-h-[420px] max-h-[820px] overflow-hidden rounded-none">
+          <div
+            className="absolute inset-0 bg-cover bg-center brightness-110 contrast-105 saturate-110"
+            style={{ backgroundImage: "url(/samurai_bg.webp)" }}
+          />
+          <div className="absolute inset-0 bg-black/35" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/45" />
+        </div>
+      </section>
 
-      {/* GRID */}
-      <div>
+      {/* GRID: centered with dynamic side spacing */}
+      <section className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-12 xl:px-20 2xl:px-28">
         <BlogGrid posts={filtered} />
-      </div>
+      </section>
     </div>
   );
 }
