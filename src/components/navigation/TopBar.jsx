@@ -2,14 +2,45 @@ import { Menu, Search, Sun, Moon } from "lucide-react";
 import IconButton from "../ui/IconButton";
 import Input from "../ui/Input";
 import { useTheme } from "../../app/ThemeProvider";
-import { useEffect, useRef } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function TopBar({ onMenu }) {
   const { theme, toggle } = useTheme();
   const inputRef = useRef(null);
-  const [params, setParams] = useSearchParams();
-  const q = params.get("q") ?? "";
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const q = useMemo(() => {
+    const sp = new URLSearchParams(location.search);
+    return sp.get("q") ?? "";
+  }, [location.search]);
+
+  const [value, setValue] = useState(q);
+
+  // keep local input in sync when user hits back/forward
+  useEffect(() => setValue(q), [q]);
+
+  // debounce pushing q to URL
+  useEffect(() => {
+  const id = setTimeout(() => {
+    const trimmed = value.toLowerCase().normalize("NFKD").trim();
+
+    // Always search on Home route
+    const nextSp = new URLSearchParams();
+    if (trimmed) nextSp.set("q", trimmed);
+
+    const nextSearch = nextSp.toString();
+    const nextUrl = `/${nextSearch ? `?${nextSearch}` : ""}`;
+    const currUrl = `${location.pathname}${location.search}`;
+
+    if (nextUrl !== currUrl) navigate(nextUrl, { replace: true });
+    }, 120);
+
+    return () => clearTimeout(id);
+  }, [value, location.pathname, location.search, navigate]);
+
 
   useEffect(() => {
     const onKey = (e) => {
@@ -23,6 +54,10 @@ export default function TopBar({ onMenu }) {
           e.preventDefault();
           inputRef.current?.focus();
         }
+      }
+      if (e.key === "Escape") {
+        inputRef.current?.blur();
+        setValue("");
       }
     };
     window.addEventListener("keydown", onKey);
@@ -45,13 +80,13 @@ export default function TopBar({ onMenu }) {
             <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted">
               <Search size={16} />
             </div>
+
             <Input
               ref={inputRef}
-              value={q}
-              onChange={(e) => {
-                const next = e.target.value;
-                if (next) setParams({ q: next });
-                else setParams({});
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") e.preventDefault();
               }}
               placeholder="Search posts... (Ctrl K)"
               className="pl-9"

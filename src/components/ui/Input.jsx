@@ -1,6 +1,9 @@
-export default function Input({ className = "", ...props }) {
+import React from "react";
+
+const Input = React.forwardRef(function Input({ className = "", ...props }, ref) {
   return (
     <input
+      ref={ref}
       {...props}
       className={[
         "h-10 w-full rounded-lg px-3",
@@ -12,4 +15,6 @@ export default function Input({ className = "", ...props }) {
       ].join(" ")}
     />
   );
-}
+});
+
+export default Input;

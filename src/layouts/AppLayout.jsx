@@ -13,7 +13,7 @@ export default function AppLayout() {
 
       <div className="flex-1 min-w-0">
         <TopBar onMenu={() => setSidebarOpen(true)} />
-        <main className="pt-20 pb-8">
+        <main className="pt-16 pb-8">
           <Outlet />
         </main>
       </div>

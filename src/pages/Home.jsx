@@ -3,21 +3,23 @@ import { useSearchParams } from "react-router-dom";
 import { posts } from "../data/posts";
 import BlogGrid from "../components/blog/BlogGrid";
 
+const norm = (s = "") => s.toLowerCase().normalize("NFKD").trim();
+
 export default function Home() {
-  const [params] = useSearchParams();
-  const q = (params.get("q") ?? "").trim().toLowerCase();
+  const [searchParams] = useSearchParams();
+  const q = norm(searchParams.get("q") ?? "");
 
   const filtered = useMemo(() => {
     if (!q) return posts;
     return posts.filter((p) => {
-      const hay = `${p.title} ${p.excerpt} ${(p.tags || []).join(" ")}`.toLowerCase();
+      const hay = norm(`${p.title} ${p.excerpt} ${(p.tags || []).join(" ")}`);
       return hay.includes(q);
     });
   }, [q]);
 
   return (
     <div className="space-y-10">
-      {/* HERO: full-bleed to viewport edges */}
+      {/* HERO */}
       <section className="relative left-1/2 right-1/2 w-screen -ml-[50vw] -mr-[50vw]">
         <div className="relative h-[62vh] min-h-[420px] max-h-[820px] overflow-hidden rounded-none">
           <div
@@ -29,7 +31,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* GRID: centered with dynamic side spacing */}
+      {/* GRID */}
       <section className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-12 xl:px-20 2xl:px-28">
         <BlogGrid posts={filtered} />
       </section>
