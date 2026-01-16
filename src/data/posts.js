@@ -46,7 +46,7 @@ export const posts = [
     title: "Beauty: Too rich for earth to use, for heaven too dear",
     excerpt: "Prince Myshkin said that beauty shall save the world",
     cover: "/covers/prayer.png",
-    date: "2026-01-21s",
+    date: "2026-01-21",
     tags: ["philosophy", "life"],
   },
 ];

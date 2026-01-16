@@ -24,23 +24,22 @@ export default function TopBar({ onMenu }) {
 
   // debounce pushing q to URL
   useEffect(() => {
-  const id = setTimeout(() => {
-    const trimmed = value.toLowerCase().normalize("NFKD").trim();
+      if (value === q) return; // critical: prevents redirect on route changes
 
-    // Always search on Home route
-    const nextSp = new URLSearchParams();
-    if (trimmed) nextSp.set("q", trimmed);
+      const id = setTimeout(() => {
+        const trimmed = value.toLowerCase().normalize("NFKD").trim();
 
-    const nextSearch = nextSp.toString();
-    const nextUrl = `/${nextSearch ? `?${nextSearch}` : ""}`;
-    const currUrl = `${location.pathname}${location.search}`;
+        const nextSp = new URLSearchParams();
+        if (trimmed) nextSp.set("q", trimmed);
 
-    if (nextUrl !== currUrl) navigate(nextUrl, { replace: true });
-    }, 120);
+        const nextSearch = nextSp.toString();
+        const nextUrl = `/${nextSearch ? `?${nextSearch}` : ""}`;
 
-    return () => clearTimeout(id);
-  }, [value, location.pathname, location.search, navigate]);
+        navigate(nextUrl, { replace: true });
+      }, 120);
 
+      return () => clearTimeout(id);
+    }, [value, q, navigate]);
 
   useEffect(() => {
     const onKey = (e) => {
