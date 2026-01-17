@@ -26,10 +26,10 @@ export const posts = [
   },
   {
     slug: "fourth-post",
-    title: "The Calm Weapon: Patience",
-    excerpt: "A short scripture to pull the reader in, without telling the ending.",
+    title: "Suffering and Meaning",
+    excerpt: "A short work on how meaning can be derived not in spite of pain but because of it",
     cover: "/covers/tear.png",
     date: "2026-01-18",
-    tags: ["philosophy", "discipline"],
+    tags: ["philosophy", "life"],
   },
 ];
