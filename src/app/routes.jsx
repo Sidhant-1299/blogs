@@ -6,10 +6,11 @@ import NotFound from "../pages/NotFound";
 
 export const router = createBrowserRouter([
   {
+    path: "/",
     element: <AppLayout />,
     children: [
-      { path: "/", element: <Home /> },
-      { path: "/post/:slug", element: <Post /> },
+      { index: true, element: <Home /> },
+      { path: "post/:slug", element: <Post /> },
       { path: "*", element: <NotFound /> },
     ],
   },
