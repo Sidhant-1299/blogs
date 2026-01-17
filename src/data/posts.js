@@ -28,25 +28,8 @@ export const posts = [
     slug: "fourth-post",
     title: "The Calm Weapon: Patience",
     excerpt: "A short scripture to pull the reader in, without telling the ending.",
-    cover: "/covers/golden-tiger.png",
+    cover: "/covers/tear.png",
     date: "2026-01-18",
     tags: ["philosophy", "discipline"],
-  },
-  {
-    slug: "fifth-post",
-    title: "Aesthetic Systems: Why Notion Works",
-    excerpt: "Notion's magic is typography + spacing + restraint. Copy that, not the pixels.",
-    cover: "/covers/marble-statue.png",
-    date: "2026-01-19",
-    tags: ["design", "systems"],
-  },
-
-  {
-    slug: "sixth-post",
-    title: "Beauty: Too rich for earth to use, for heaven too dear",
-    excerpt: "Prince Myshkin said that beauty shall save the world",
-    cover: "/covers/prayer.png",
-    date: "2026-01-21",
-    tags: ["philosophy", "life"],
   },
 ];

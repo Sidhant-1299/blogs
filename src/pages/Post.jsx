@@ -9,13 +9,15 @@ export default function Post() {
     return (
       <div className="space-y-3">
         <h1 className="text-2xl font-semibold">Not found</h1>
-        <Link className="text-accent" to="/">Back home</Link>
+        <Link className="text-accent" to="/">
+          Back home
+        </Link>
       </div>
     );
   }
 
   return (
-    <article className="max-w-3xl">
+    <article className="mx-auto w-full max-w-3xl py-8 lg:py-12">
       <Link className="text-sm text-muted hover:text-text" to="/">
         ← Back
       </Link>
@@ -28,9 +30,7 @@ export default function Post() {
       </div>
 
       <div className="prose prose-invert mt-8 max-w-none">
-        <p>
-          For now this is placeholder content. Later you render Markdown or MDX here.
-        </p>
+        <p>For now this is placeholder content. Later you render Markdown or MDX here.</p>
       </div>
     </article>
   );

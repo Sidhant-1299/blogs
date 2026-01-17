@@ -17,9 +17,11 @@ export default function Home() {
     });
   }, [q]);
 
+  const year = new Date().getFullYear();
+
   return (
     <div className="space-y-10">
-      {/* HERO */}
+      {/* HERO full-bleed */}
       <section className="relative left-1/2 right-1/2 w-screen -ml-[50vw] -mr-[50vw]">
         <div className="relative h-[62vh] min-h-[420px] max-h-[820px] overflow-hidden rounded-none">
           <div
@@ -31,10 +33,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* GRID */}
-      <section className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-12 xl:px-20 2xl:px-28">
+      {/* GRID uses layout container width */}
+      <section className="w-full">
         <BlogGrid posts={filtered} />
       </section>
+
+      {/* FOOTER uses layout container width */}
+      <footer className="border-t border-border">
+        <div className="py-6">
+          <p className="text-sm text-muted text-center">
+            © {year} Sidhant Raj Khati. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }

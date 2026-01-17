@@ -1,22 +1,24 @@
-// AppLayout.jsx (so font applies globally)
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
-import Sidebar from "../components/navigation/Sidebar";
 import TopBar from "../components/navigation/TopBar";
+import Sidebar from "../components/navigation/Sidebar";
+import ScrollToTop from "../components/ScrollToTop";
 
 export default function AppLayout() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
-    <div className="min-h-screen w-screen overflow-x-hidden bg-app text-text font-sans">
-      <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+    <div className="min-h-screen bg-app text-text">
+      <TopBar onMenu={() => setOpen(true)} />
+      <Sidebar open={open} onClose={() => setOpen(false)} />
 
-      <div className="flex-1 min-w-0">
-        <TopBar onMenu={() => setSidebarOpen(true)} />
-        <main className="pt-16 pb-8">
+      <ScrollToTop />
+
+      <main className="pt-16">
+        <div className="mx-auto w-full max-w-6xl 2xl:max-w-7xl px-4 sm:px-6 lg:px-12">
           <Outlet />
-        </main>
-      </div>
+        </div>
+      </main>
     </div>
   );
 }

@@ -13,7 +13,7 @@ export default function BlogCard({ post }) {
         "hover:bg-surface2 hover:ring-white/20",
       ].join(" ")}
     >
-      <div className="flex flex-col sm:flex-row sm:h-[360px] lg:h-[420px]">
+      <div className="flex flex-col sm:flex-row sm:h-[360px] lg:h-[420px] 2xl:h-[460px]">
         {/* IMAGE */}
         <div className="relative overflow-hidden bg-black/20 sm:basis-3/5 sm:h-full">
           <img
